@@ -18,7 +18,7 @@ A nostalgic landing page blending 90s/2000s aesthetics with modern web practices
 
 ## 🚀 Live Demo
 
-[View Live Demo](your-demo-link-here)
+[View Live Demo](https://mateodumas.github.io/CyberRetro/)
 
 ## 💻 Tech Stack
 
