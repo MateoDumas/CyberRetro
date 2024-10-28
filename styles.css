@@ -1,0 +1,290 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #ff00ff;
+    --secondary: #00ffff;
+    --background: #000033;
+    --text: #ffffff;
+}
+
+body {
+    font-family: 'VT323', monospace;
+    background: var(--background);
+    color: var(--text);
+    overflow-x: hidden;
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16'><circle cx='8' cy='8' r='5' fill='%23ff00ff'/></svg>") 8 8, auto;
+}
+
+.cursor-trail {
+    width: 10px;
+    height: 10px;
+    background: var(--primary);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    opacity: 0.5;
+    mix-blend-mode: screen;
+}
+
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--background);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.progress-bar {
+    width: 200px;
+    height: 20px;
+    background: #111;
+    border: 2px solid var(--primary);
+    margin-top: 20px;
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    transition: width 0.5s ease;
+}
+
+nav {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--primary);
+    padding: 1rem;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+}
+
+.nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2rem;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    -webkit-.logo {
+        font-size: 2rem;
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        background-clip: text; /* Standard property for compatibility */
+        -webkit-background-clip: text; /* Vendor-prefixed property for WebKit-based browsers */
+        color: transparent;
+        text-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+    }background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    position: relative;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+    text-shadow: 0 0 10px var(--primary);
+}
+
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::before {
+    width: 100%;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 2rem;
+}
+
+.stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 1s infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 1;
+}
+
+.glitch-title {
+    font-size: 5rem;
+    text-transform: uppercase;
+    position: relative;
+    text-shadow: 
+        2px 2px var(--primary),
+        -2px -2px var(--secondary);
+    animation: glitch 3s infinite;
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    margin: 2rem 0;
+    color: var(--secondary);
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.button {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 30px;
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.button-primary {
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    color: var(--text);
+}
+
+.button-secondary {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--text);
+}
+
+.button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px var(--primary);
+}
+
+.button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.button:hover::before {
+    left: 100%;
+}
+
+.features {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--primary);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 30px var(--primary);
+}
+
+.feature-icon {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.feature-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--secondary);
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .glitch-title {
+        font-size: 3rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+    }
+}
